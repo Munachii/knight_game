@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brf43v81diyir"]
+[gd_scene load_steps=16 format=3 uid="uid://brf43v81diyir"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_37nxo"]
 [ext_resource type="PackedScene" uid="uid://ci5odsk4svvoi" path="res://scenes/player.tscn" id="1_glsdp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cuc5ou7ncbh0h" path="res://scenes/killzone.tscn" id="5_0h4ke"]
 [ext_resource type="PackedScene" uid="uid://bfofc6ij7f8nj" path="res://scenes/slime.tscn" id="6_fihfs"]
 [ext_resource type="FontFile" uid="uid://d4ay58h55bsdf" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="7_awpyf"]
+[ext_resource type="FontFile" uid="uid://bt26m3uhonl7d" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="9_c1whs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ui17"]
 texture = ExtResource("2_jyilf")
@@ -170,6 +171,22 @@ texture = ExtResource("2_jyilf")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7ui17")
 
+[sub_resource type="Animation" id="Animation_mt443"]
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(592, 20), Vector2(688, 20)]
+}
+
 [sub_resource type="Animation" id="Animation_qrrx4"]
 resource_name = "move"
 length = 2.0
@@ -187,22 +204,6 @@ tracks/0/keys = {
 "values": [Vector2(591, 21), Vector2(689, 21)]
 }
 
-[sub_resource type="Animation" id="Animation_mt443"]
-length = 1.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(592, 20), Vector2(688, 20)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gho76"]
 _data = {
 "RESET": SubResource("Animation_mt443"),
@@ -212,6 +213,7 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mlyp4"]
 
 [node name="Game" type="Node2D"]
+position = Vector2(-409, 19)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -255,52 +257,75 @@ shape = SubResource("WorldBoundaryShape2D_mlyp4")
 [node name="Coins" type="Node" parent="."]
 
 [node name="coin" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(389, 58)
+position = Vector2(-19, 79)
 
 [node name="coin2" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(264, -8)
+position = Vector2(-144, 13)
 
 [node name="coin3" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(566, 87)
+position = Vector2(158, 108)
 
 [node name="coin4" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(111, 70)
+position = Vector2(-297, 91)
 
 [node name="coin5" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(488, -6)
+position = Vector2(79, 13)
 
 [node name="coin6" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(759, -23)
+position = Vector2(351, -2)
 
 [node name="coin7" parent="Coins" instance=ExtResource("4_7nnoe")]
-position = Vector2(566, 87)
+position = Vector2(158, 108)
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="slime" parent="Enemies" instance=ExtResource("6_fihfs")]
-position = Vector2(280, 5)
+position = Vector2(-128, 26)
 
 [node name="slime2" parent="Enemies" instance=ExtResource("6_fihfs")]
-position = Vector2(536, 68)
+position = Vector2(128, 89)
 
 [node name="labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="labels"]
-offset_left = -52.0
-offset_top = 50.0
-offset_right = 57.0
-offset_bottom = 73.0
+offset_left = -478.0
+offset_top = 55.0
+offset_right = -369.0
+offset_bottom = 78.0
 theme_override_colors/font_color = Color(0.976471, 0.556863, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_awpyf")
 theme_override_font_sizes/font_size = 8
 text = "space to jump"
 
 [node name="Label2" type="Label" parent="labels"]
-offset_left = 597.0
-offset_top = 38.0
-offset_right = 706.0
-offset_bottom = 61.0
+offset_left = 189.0
+offset_top = 59.0
+offset_right = 298.0
+offset_bottom = 82.0
 theme_override_colors/font_color = Color(0.976471, 0.556863, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_awpyf")
 theme_override_font_sizes/font_size = 8
 text = "Nearly there"
+
+[node name="Label3" type="Label" parent="labels"]
+offset_left = 333.0
+offset_top = -81.0
+offset_right = 410.0
+offset_bottom = -57.0
+theme_override_colors/font_color = Color(0.964706, 0.180392, 0.439216, 1)
+theme_override_fonts/font = ExtResource("7_awpyf")
+theme_override_font_sizes/font_size = 8
+text = "Great job!"
+horizontal_alignment = 1
+
+[node name="scoreLabel" type="Label" parent="labels"]
+offset_left = 284.0
+offset_top = -67.0
+offset_right = 454.0
+offset_bottom = -43.0
+theme_override_colors/font_color = Color(0.964706, 0.180392, 0.439216, 1)
+theme_override_fonts/font = ExtResource("9_c1whs")
+theme_override_font_sizes/font_size = 8
+text = "You have earned  x coins!"
+horizontal_alignment = 1
+autowrap_mode = 2

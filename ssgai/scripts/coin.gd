@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var game_manager = %GameManager
+@onready var animation_player = $pickUp/AnimationPlayer2
 
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
@@ -13,5 +14,5 @@ extends Area2D
 
 
 func _on_body_entered(_body) :
-	game_manager.addPoint()
-	queue_free()
+	game_manager.add_point()
+	animation_player.play("pickUp")
